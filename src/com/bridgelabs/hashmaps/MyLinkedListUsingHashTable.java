@@ -32,7 +32,6 @@ public class MyLinkedListUsingHashTable <K,V> {
 		}
 	}
 	
-
 	private int getBucketIndex(K key) {
 		int hashCode = Math.abs(key.hashCode());
 		int index = hashCode % numBuckets;
@@ -49,6 +48,12 @@ public class MyLinkedListUsingHashTable <K,V> {
 		MyMapNode<K,V> mymapnode = (MyMapNode<K,V>) myLinkedList.search(key);
 		return (mymapnode == null) ? null : mymapnode.getValue();
 		
+	}
+	
+	public void remove(K key) {
+		int index = this.getBucketIndex(key);
+		MyLinkedListHashMap<K> myLinkedList = this.myBucketArray.get(index);
+		myLinkedList.delete(key);
 	}
 	
 	@Override

@@ -47,7 +47,23 @@ public class MyLinkedListHashMap <K> {
 		}
 		return null;
 	}
-	
+
+	public void delete(K key) {
+		INode tempNode = head;
+		INode prevNode = null;
+		
+		while(tempNode != null) {
+			if (tempNode.getKey().equals(key)) {
+				tempNode = tempNode.getNext();
+				prevNode.setNext(tempNode);
+				break;
+			}
+			prevNode = tempNode;
+			tempNode = tempNode.getNext();
+		}
+		
+	}
+		
 	public void printLinkedList() {
 		StringBuffer printformat = new StringBuffer("My Nodes: ");
 		INode tempNode = head;
@@ -65,4 +81,5 @@ public class MyLinkedListHashMap <K> {
 	public String toString() {
 		return "MyLinkedListNodes {" +head+ "}";
 	}
+
 }
